@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titularidad Blockchain - Protección de Propiedad Intelectual</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Botón "Subir al inicio" -->
+    <button id="btn-subir" title="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Titularidad Blockchain</h1>
+        <p>protege y verifica tu propiedad intelectual de manera inmutable.</p>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="contenedor-principal">
+        <!-- Menú de secciones (flotante) -->
+        <nav id="menu-flotante">
+            <div class="category">
+                <a href="#registrar">
+                    <h3>Registrar Archivo</h3>
+                    <p>Sube tu archivo y obtén un certificado de autoría en la blockchain.</p>
+                </a>
+            </div>
+            <div class="category">
+                <a href="#verificar">
+                    <h3>Verificar Titularidad</h3>
+                    <p>Comprueba la autenticidad de un archivo registrado en la blockchain.</p>
+                </a>
+            </div>
+            <div class="category">
+              <a href="#tutorial">
+                  <h3>Cómo funciona</h3>
+                  <p>Aprende a usar Titularidad Blockchain paso a paso.</p>
+              </a>
+          </div>
+            <div class="category">
+                <a href="#informacion">
+                    <h3>Información del Sistema</h3>
+                    <p>Descubre cómo Titularidad Blockchain protege tu propiedad intelectual.</p>
+                </a>
+            </div>
+            <div class="category">
+                <a href="#terminos">
+                    <h3>Términos de Uso</h3>
+                    <p>Conoce las condiciones y responsabilidades al usar Titularidad Blockchain.</p>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main>
+            <!-- Sección de Registro de Archivo -->
+            <section id="registrar">
+                <div class="contenido">
+                    <h2>Registrar Archivo</h2>
+                    <form id="formRegistro">
+                        <input type="file" id="archivoRegistro" required>
+                        <input type="text" id="secretoRegistro" placeholder="Ingresa un secreto" required>
+                        <button type="submit">Registrar Archivo</button>
+                    </form>
+                    <div class="loader" id="loaderRegistro"></div>
+                </div>
+            </section>
+
+            <!-- Separador -->
+            <div class="separador"></div>
+
+            <!-- Sección de Verificación de Archivo -->
+            <section id="verificar">
+                <div class="contenido">
+                    <h2>Verificar Titularidad</h2>
+                    <form id="formVerificacion">
+                        <input type="file" id="archivoVerificacion" required>
+                        <input type="text" id="secretoVerificacion" placeholder="Ingresa un secreto" required>
+                        <input type="text" id="tokenId" placeholder="Ingresa el ID del NFT" required>
+                        <button type="submit">Verificar Archivo</button>
+                    </form>
+                    <div class="loader" id="loaderVerificacion"></div>
+                </div>
+            </section>
+
+            <!-- Separador -->
+            <div class="separador"></div>
+
+            <!-- Sección de Cómo funciona -->
+            <section id="tutorial">
+              <div class="contenido">
+                  <h2>Cómo funciona Titularidad Blockchain</h2>
+                  <p>Aquí te explicamos paso a paso cómo usar Titularidad Blockchain para proteger y verificar tus archivos. ¡Es muy fácil!</p>
+
+                  <!-- Tutorial de Registro -->
+                  <div id="tutorial-registro">
+                    <h3>1. Registrar un archivo</h3>
+                    <p>Registrar un archivo en Titularidad Blockchain es como guardar un tesoro en un cofre mágico. Sigue estos pasos:</p>
+                    <ol>
+                        <li>
+                            <strong>Selecciona tu archivo:</strong>
+                            <p>Haz clic en el botón "Seleccionar archivo" y elige el archivo que quieres proteger. Puede ser una canción, un dibujo, un texto o cualquier cosa que hayas creado.</p>
+                            <p><em>¿Por qué es importante?</em> El archivo es tu creación única, y necesitamos protegerla.</p>
+                        </li>
+                        <li>
+                            <strong>Ingresa un secreto:</strong>
+                            <p>Escribe una palabra o frase secreta que solo tú conozcas. Este secreto es como la llave de tu cofre mágico.</p>
+                            <p><em>¿Por qué es importante?</em> El secreto asegura que solo tú puedas verificar la titularidad del archivo en el futuro.</p>
+                            <p><strong>Nota:</strong> No te preocupes por las mayúsculas o minúsculas. El sistema convertirá automáticamente tu secreto a MAYÚSCULAS.</p>
+                        </li>
+                        <li>
+                            <strong>Conecta tu billetera:</strong>
+                            <p>Si no has conectado tu billetera de MetaMask, el sistema te pedirá que lo hagas. Es como firmar un contrato para proteger tu tesoro.</p>
+                            <p><em>¿Por qué es importante?</em> La billetera es tu identidad en la blockchain y garantiza que eres el dueño del archivo.</p>
+                        </li>
+                        <li>
+                            <strong>Confirma el registro:</strong>
+                            <p>Una vez que todo esté listo, haz clic en "Registrar archivo". Titularidad Blockchain guardará tu archivo en la blockchain y te dará un número único (NFT ID) que debes guardar.</p>
+                            <p><em>¿Por qué es importante?</em> El NFT ID es como el número de serie de tu tesoro. Lo necesitarás para verificarlo más tarde.</p>
+                        </li>
+                    </ol>
+                </div>
+
+                  <!-- Tutorial de Verificación -->
+                  <div id="tutorial-verificacion">
+                      <h3>2. Verificar la titularidad de un archivo</h3>
+                      <p>Verificar un archivo es como abrir el cofre mágico para asegurarte de que tu tesoro sigue siendo tuyo. Sigue estos pasos:</p>
+                      <ol>
+                          <li>
+                              <strong>Selecciona el archivo:</strong>
+                              <p>Haz clic en el botón "Seleccionar archivo" y elige el archivo que registraste anteriormente.</p>
+                              <p><em>¿Por qué es importante?</em> Necesitamos el archivo original tal cual como lo registraste sin cambios para compararlo con el registro en la blockchain.</p>
+                          </li>
+                          <li>
+                              <strong>Ingresa tu secreto:</strong>
+                              <p>Escribe la misma palabra o frase secreta que usaste cuando registraste el archivo.</p>
+                              <p><em>¿Por qué es importante?</em> El secreto asegura que solo tú puedes verificar la titularidad del archivo.</p>
+                          </li>
+                          <li>
+                              <strong>Ingresa el NFT ID:</strong>
+                              <p>Escribe el número único (NFT ID) que recibiste cuando registraste el archivo.</p>
+                              <p><em>¿Por qué es importante?</em> El NFT ID es como la llave que abre el cofre mágico y verifica que el archivo es tuyo.</p>
+                          </li>
+                          <li>
+                              <strong>Confirma la verificación:</strong>
+                              <p>Haz clic en "Verificar archivo". Titularidad Blockchain comparará tu archivo con el registro en la blockchain y te dirá si es auténtico.</p>
+                              <p><em>¿Por qué es importante?</em> La verificación te asegura que nadie ha copiado o robado tu creación.</p>
+                          </li>
+                      </ol>
+                  </div>
+
+                  <p>¡Y eso es todo! Ahora puedes proteger y verificar tus archivos como un profesional. 😊</p>
+              </div>
+            </section>
+
+              <!-- Separador -->
+            <div class="separador"></div>
+
+
+            <!-- Sección de Información del Sistema -->
+            <section id="informacion">
+                <div class="contenido">
+                    <h2>¿Por qué usar Titularidad Blockchain?</h2>
+                    <p>Titularidad Blockchain utiliza la tecnología de blockchain de Ethereum para proteger tu propiedad intelectual de manera segura, transparente e inmutable. Aquí te explicamos cómo funciona y por qué es la mejor opción para ti:</p>
+                    <h3>¿Qué es la blockchain y por qué es tan segura?</h3>
+                    <p>La blockchain es como un libro mágico que nunca se puede borrar ni modificar. Cada vez que alguien escribe algo en este libro, queda guardado para siempre y todos pueden verlo. Ethereum es una de las blockchains más famosas y confiables del mundo, y es perfecta para guardar información importante, como la prueba de que tú eres el autor de algo.</p>
+                    <h3>¿Cómo protege tu autoría?</h3>
+                    <p>Cuando subes tu archivo (como una canción, un texto o un diseño) a Titularidad Blockchain, este genera un "certificado digital" único que se guarda en la blockchain. Este certificado es como una huella digital que solo pertenece a tu creación. Nadie más puede copiarla o decir que es suya, porque la blockchain tiene la prueba de que tú fuiste el primero en registrarla.</p>
+                    <h3>Pruebas reales de su utilidad legal</h3>
+                    <p>En varios países, los registros en blockchain ya se están utilizando como evidencia legal. Por ejemplo:</p>
+                    <ul>
+                        <li><strong>Abogados y jueces</strong> pueden usar el certificado de blockchain para resolver disputas de propiedad intelectual, ya que es una prueba irrefutable de autoría.</li>
+                        <li><strong>Sociedades de gestión de derechos de autor</strong> (como la SGAE en España o ASCAP en EE.UU.) están explorando el uso de blockchain para gestionar y proteger los derechos de los artistas.</li>
+                        <li><strong>Instituciones gubernamentales</strong> en países como Estonia y Suiza ya utilizan blockchain para proteger documentos oficiales, lo que demuestra su validez legal.</li>
+                    </ul>
+                    <h3>¿Por qué es perfecto para ti?</h3>
+                    <p>Ya seas un artista, inventor, escritor o creador de cualquier tipo, Titularidad Blockchain te ofrece:</p>
+                    <ul>
+                        <li><strong>Tranquilidad</strong>: Sabes que tu creación está protegida para siempre.</li>
+                        <li><strong>Confianza</strong>: Puedes compartir tu obra sin miedo a que te la roben.</li>
+                        <li><strong>Poder</strong>: Si alguien intenta plagiar tu trabajo, tienes una prueba irrefutable para defenderte.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Separador -->
+            <div class="separador"></div>
+
+            <!-- Sección de Términos de Uso -->
+            <section id="terminos">
+                <div class="contenido">
+                    <h2>Términos de Uso</h2>
+                    <p>Al utilizar Titularidad Blockchain, aceptas los siguientes términos y condiciones:</p>
+                    <h3>1. Responsabilidad del Usuario</h3>
+                    <p>Titularidad Blockchain no recolecta datos sensibles ni información personal. Sin embargo, es responsabilidad del usuario:</p>
+                    <ul>
+                        <li>Mantener segura su wallet (billetera digital) y las credenciales de acceso.</li>
+                        <li>No compartir sus claves privadas con terceros.</li>
+                        <li>Entender que la pérdida de la wallet o las credenciales puede resultar en la imposibilidad de verificar la titularidad de los registros.</li>
+                    </ul>
+                    <h3>2. Uso de la Blockchain</h3>
+                    <p>Titularidad Blockchain utiliza la red de Arbitrum, una capa 2 de Ethereum, para registrar tus archivos en la blockchain. Esto implica:</p>
+                    <ul>
+                        <li>El pago de una tarifa de gas (gas fee) para realizar transacciones en la red. Esta tarifa no es cobrada por Titularidad Blockchain, sino por la red de Ethereum.</li>
+                        <li>La inmutabilidad de los registros: una vez que un archivo se registra en la blockchain, no puede ser modificado ni eliminado.</li>
+                    </ul>
+                    <h3>3. Exención de Responsabilidad</h3>
+                    <p>Titularidad Blockchain no se hace responsable por:</p>
+                    <ul>
+                        <li>La pérdida de acceso a la wallet o credenciales del usuario.</li>
+                        <li>El uso indebido de la plataforma por parte de terceros.</li>
+                        <li>Problemas técnicos o fallos en la red de Ethereum o Arbitrum.</li>
+                    </ul>
+                    <h3>4. Privacidad</h3>
+                    <p>Titularidad Blockchain no almacena ni utiliza información personal de los usuarios. Toda la información registrada en la blockchain es pública y accesible por diseño.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+      <!--
+        <p>Síguenos en nuestras redes sociales:</p>
+        <div class="redes-sociales">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      -->
+        <p>&copy; 2025 Titularidad Blockchain. Rino Tirri - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Ventana modal personalizada -->
+    <div id="modal" class="modal">
+        <div class="modal-content" id="modalContent">
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <!-- Spinner de carga -->
+            <div id="modalSpinner" class="spinner" style="display: none;"></div>
+            <!-- Formulario de datos personales -->
+            <div id="modalForm" style="display: none;">
+              <div id="datosPersonales">
+                  <input type="text" id="titulo" placeholder="Título del archivo" required>
+                  <textarea id="descripcion" placeholder="Descripción del archivo (opcional)"></textarea>
+                  <input type="text" id="nombre" placeholder="Nombre" required>
+                  <input type="text" id="apellido" placeholder="Apellido" required>
+                  <input type="text" id="identificacion" placeholder="Identificación (opcional)">
+                  <small>Esta información no se recolecta, solo es para el certificado.</small>
+                  <button onclick="generarCertificado()">Generar Certificado</button>
+                </div>
+            </div>
+            <button onclick="cerrarModal()">Cerrar</button>
+        </div>
+      </div>
+
+    <!-- Scripts -->
+    <script>
+        const proxyAddress = "0x10bfbd525B734317CD918Aa0a5446713D38194Af"; // Dirección del contrato proxy
+        const proxyAbi = [ /* ABI del contrato proxy */ 
+        {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_fileNFTAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "fileNFT",
+      "outputs": [
+        {
+          "internalType": "contract FileNFT",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getFile",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "lastOperationTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "operationsCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "fileHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "registerFileAndMintNFT",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "fileHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "verificarAutenticidad",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+        ];
+        const fileNFTAddress = "0xA107A1f06E90cab01407270486916D2dA10fec1F"; // Dirección del contrato principal
+        const fileNFTAbi = [ /* ABI del contrato principal */
+        {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "ERC721IncorrectOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ERC721InsufficientApproval",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "approver",
+          "type": "address"
+        }
+      ],
+      "name": "ERC721InvalidApprover",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "ERC721InvalidOperator",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "ERC721InvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        }
+      ],
+      "name": "ERC721InvalidReceiver",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "ERC721InvalidSender",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ERC721NonexistentToken",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "addToWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "files",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "fileHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCurrentTokenId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getFile",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "proxy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "fileHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "registerFileAndMintNFT",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "removeFromWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proxy",
+          "type": "address"
+        }
+      ],
+      "name": "setProxy",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "fileHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "verificarAutenticidad",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "whitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+         ];
+        const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+        let signer;
+        let proxyContract;
+        let tokenIdRegistrado;
+
+        // Carrusel de imágenes de fondo
+        const images = [
+            /*/"url('hhttps://unsplash.com/es/fotos/cielo-nocturno-lleno-de-estrellas-y-siluetas--JMK4lyhnGM')",
+            "url('https://stellarnova.neocities.org/imagenes/Leonardo_Vision_XL_A_vertical_canvas_with_a_vibrant_yet_soft_o_0.jpg')",
+            "url('https://stellarnova.neocities.org/imagenes/Leonardo_Vision_XL_A_futuristic_computer_screen_displaying_a_c_1.jpg')"*/
+        ];
+        let currentImage = 0;
+
+        function changeBackground() {
+            try {
+                if (images.length > 0) {
+                    document.body.style.backgroundImage = images[currentImage];
+                    currentImage = (currentImage + 1) % images.length;
+                }
+            } catch (error) {
+                console.error("Error en el carrusel de imágenes:", error);
+            }
+        }
+
+        setInterval(changeBackground, 10000);
+
+        // Botón "Subir al inicio"
+        const btnSubir = document.getElementById("btn-subir");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btnSubir.style.display = "block";
+            } else {
+                btnSubir.style.display = "none";
+            }
+        };
+
+        btnSubir.addEventListener("click", () => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+
+        // Funcionalidad de registro y verificación
+        async function conectarMetaMask() {
+            try {
+                if (window.ethereum) {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    signer = provider.getSigner();
+                    proxyContract = new ethers.Contract(proxyAddress, proxyAbi, signer);
+                    mostrarModal("Billetera conectada correctamente.", "success");
+                } else {
+                    mostrarModal("Por favor, instala MetaMask.", "error");
+                }
+            } catch (error) {
+                console.error("Error al conectar MetaMask:", error);
+                mostrarModal("Error al conectar MetaMask.", "error");
+            }
+        }
+
+        function mostrarLoader(loaderId) {
+            const loader = document.getElementById(loaderId);
+            loader.style.display = 'block';
+        }
+
+        function ocultarLoader(loaderId) {
+            const loader = document.getElementById(loaderId);
+            loader.style.display = 'none';
+        }
+
+        function mostrarModal(mensaje, tipo = "process", mostrarDatosPersonales = false) {
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modalContent');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
+    const modalForm = document.getElementById('modalForm');
+    const modalSpinner = document.getElementById('modalSpinner');
+
+    // Establecer el título según el tipo de mensaje
+    if (tipo === 'success') {
+        modalTitle.textContent = 'Éxito';
+    } else if (tipo === 'error') {
+        modalTitle.textContent = 'Error';
+    } else {
+        modalTitle.textContent = 'Procesando...'; // Mensaje neutro para procesos en curso
+    }
+
+    modalMessage.textContent = mensaje;
+
+    // Mostrar u ocultar el formulario según el parámetro
+    if (tipo === 'success' && mostrarDatosPersonales) {
+        modalForm.style.display = 'block';
+    } else {
+        modalForm.style.display = 'none';
+    }
+
+    // Mostrar u ocultar el spinner según el tipo de mensaje
+    if (tipo === 'process') {
+        modalSpinner.style.display = 'block';
+    } else {
+        modalSpinner.style.display = 'none';
+    }
+
+    modal.style.display = 'flex';
+}
+
+    function cerrarModal() {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+    }
+
+    function mostrarSpinner() {
+        const modalSpinner = document.getElementById('modalSpinner');
+        modalSpinner.style.display = 'block';
+    }
+
+    function ocultarSpinner() {
+        const modalSpinner = document.getElementById('modalSpinner');
+        modalSpinner.style.display = 'none';
+    }
+    function generarCertificado() {
+        const titulo = document.getElementById('titulo').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const nombre = document.getElementById('nombre').value;
+        const apellido = document.getElementById('apellido').value;
+        const identificacion = document.getElementById('identificacion').value;
+        const archivo = document.getElementById('archivoRegistro').files[0];
+
+        // Obtener fecha y hora actual
+        const ahora = new Date();
+        const fecha = ahora.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+        const hora = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' });
+
+        const certificado = `
+            <h1 style="font-size: 24px;">Certificado de Registro</h1>
+            <p style="font-size: 18px;"><strong>Título del archivo:</strong> ${titulo}</p>
+            <p style="font-size: 18px;"><strong>Descripción:</strong> ${descripcion}</p>
+            <p style="font-size: 18px;"><strong>Nombre:</strong> ${nombre} ${apellido}</p>
+            <p style="font-size: 18px;"><strong>Identificación:</strong> ${identificacion}</p>
+            <p style="font-size: 18px;"><strong>Archivo:</strong> ${archivo.name}</p>
+            <p style="font-size: 18px;"><strong>Token ID:</strong> ${tokenIdRegistrado}</p>
+            <p style="font-size: 18px;"><strong>Fecha y Hora:</strong> ${fecha} a las ${hora}</p>
+            <p style="font-size: 18px;">Este certificado garantiza con la inmutabilidad de la red que el registro que ha hecho va a permanecer ahí y servirá como evidencia en el futuro que es el autor.</p>
+        `;
+
+        const ventana = window.open('', '_blank');
+        ventana.document.write(certificado);
+        ventana.document.close();
+        ventana.print();
+    }
+    async function registrarArchivo(file, secreto) {
+    mostrarLoader('loaderRegistro');
+    mostrarModal("Procesando registro en la blockchain...", "process");
+
+    try {
+        if (!signer) {
+            await conectarMetaMask();
+        }
+
+        const reader = new FileReader();
+        reader.onload = async function (e) {
+            const base64File = e.target.result.split(',')[1];
+            const secretoNormalizado = secreto.toUpperCase(); // Convertir el secreto a mayúsculas
+            const fileConSecreto = base64File + secretoNormalizado;
+            const fileHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(fileConSecreto));
+
+            const arrayed = ethers.utils.arrayify(fileHash);
+            const signature = await signer.signMessage(arrayed);
+
+            const tx = await proxyContract.registerFileAndMintNFT(fileHash, signature);
+            await tx.wait();
+
+            const fileNFTContract = new ethers.Contract(fileNFTAddress, fileNFTAbi, signer);
+            tokenIdRegistrado = await fileNFTContract.getCurrentTokenId();
+
+            mostrarModal(`Su archivo fue registrado con el NFT ID: ${tokenIdRegistrado.toString()}. Guárdelo para futuras consultas.`, "success", true);
+        };
+        reader.readAsDataURL(file);
+    } catch (error) {
+        console.error("Error al registrar el archivo:", error);
+        mostrarModal("Error al registrar el archivo. Por favor, inténtalo de nuevo.", "error");
+    } finally {
+        ocultarLoader('loaderRegistro');
+    }
+}
+
+
+
+async function verificarArchivo(file, secreto, tokenId) {
+    mostrarLoader('loaderVerificacion');
+    mostrarModal("Verificando titularidad del archivo...", "process");
+
+    try {
+        if (!signer) {
+            await conectarMetaMask();
+        }
+
+        const reader = new FileReader();
+        reader.onload = async function (e) {
+            const base64File = e.target.result.split(',')[1];
+            const secretoNormalizado = secreto.toUpperCase(); // Convertir el secreto a mayúsculas
+            const fileConSecreto = base64File + secretoNormalizado;
+            const fileHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(fileConSecreto));
+
+            const arrayed = ethers.utils.arrayify(fileHash);
+            const signature = await signer.signMessage(arrayed);
+
+            try {
+                const esAutentico = await proxyContract.verificarAutenticidad(tokenId, fileHash, signature);
+
+                if (esAutentico) {
+                    mostrarModal("¡El archivo es auténtico! Usted es el titular.", "success");
+                } else {
+                    mostrarModal("El archivo no coincide con el registro original.", "error");
+                }
+            } catch (error) {
+                if (error.code === 'CALL_EXCEPTION' && error.reason === 'El NFT no existe') {
+                    mostrarModal("No hay ningún archivo registrado con este ID.", "error");
+                } else {
+                    console.error("Error al verificar el archivo:", error);
+                    mostrarModal("Error al verificar el archivo. Por favor, inténtalo de nuevo.", "error");
+                }
+            }
+        };
+        reader.readAsDataURL(file);
+    } catch (error) {
+        console.error("Error al verificar el archivo:", error);
+        mostrarModal("Error al verificar el archivo. Por favor, inténtalo de nuevo.", "error");
+    } finally {
+        ocultarLoader('loaderVerificacion');
+    }
+}
+        // Validaciones de campos
+        function validarSecreto(secreto) {
+            if (!secreto || secreto.trim() === "") {
+                mostrarModal("El campo 'Secreto' no puede estar vacío.", "error");
+                return false;
+            }
+            return true;
+        }
+
+        function validarTokenId(tokenId) {
+            if (!tokenId || isNaN(tokenId)) {
+                mostrarModal("El campo 'ID del NFT' debe ser un número válido.", "error");
+                return false;
+            }
+            return true;
+        }
+
+        document.getElementById('formRegistro').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const file = document.getElementById('archivoRegistro').files[0];
+            const secreto = document.getElementById('secretoRegistro').value;
+
+            if (file && validarSecreto(secreto)) {
+                await registrarArchivo(file, secreto);
+            } else {
+                mostrarModal("Por favor, selecciona un archivo e ingresa un secreto válido.", "error");
+            }
+        });
+
+        document.getElementById('formVerificacion').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const file = document.getElementById('archivoVerificacion').files[0];
+            const secreto = document.getElementById('secretoVerificacion').value;
+            const tokenId = document.getElementById('tokenId').value;
+
+            if (file && validarSecreto(secreto) && validarTokenId(tokenId)) {
+                await verificarArchivo(file, secreto, tokenId);
+            } else {
+                mostrarModal("Por favor, completa todos los campos correctamente.", "error");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.9); /* Opacidad */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.contenedor-principal {
+    display: flex;
+    flex: 1;
+}
+
+/* Menú flotante */
+nav {
+    background-color: rgba(0, 0, 0, 0.9); /* Opacidad */
+    width: 250px;
+    padding: 20px;
+    position: sticky;
+    top: 60px; /* Ajuste para el header */
+    height: calc(100vh - 80px); /* Altura ajustada */
+    overflow-y: auto;
+}
+
+.category {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.category:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 153, 255, 0.7); /* Resplandor azulado */
+}
+
+.category h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.category p {
+    color: #ddd;
+    margin: 5px 0 0;
+    font-size: 0.9em;
+}
+
+.category a {
+    text-decoration: none;
+    color: inherit;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Opacidad */
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.9); /* Opacidad */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.redes-sociales a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    color: #1abc9c; /* Efecto hover */
+}
+
+/* Botón "Subir al inicio" */
+#btn-subir {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: background-color 0.3s ease;
+}
+
+#btn-subir:hover {
+    background-color: #1abc9c;
+}
+
+/* Separador */
+.separador {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 40px 0;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form input, form button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #333;
+}
+
+form button {
+    background-color: #1abc9c;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #16a085;
+}
+
+/* Loader */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1abc9c;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: none;
+    margin: 20px auto;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #09f;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 10px;
+    }
+
+    .category {
+        margin: 10px 0;
+    }
+}
+
+/* Estilos para la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #333; /* Añade esta línea para asegurar que el texto sea visible */
+}
+
+.modal-content.success {
+    border: 2px solid #4CAF50;
+}
+
+.modal-content.error {
+    border: 2px solid #f44336;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}
+
+#modalForm {
+    margin-top: 20px;
+    padding: 20px;
+    max-width: 90%;
+    text-align: center;
+}
+
+#modalForm input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#modalForm button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #09f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#modalForm button:hover {
+    background-color: #07c;
+}
+
+#modalForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* Estilos para la sección "Cómo funciona" */
+#tutorial .contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+
+#tutorial h3 {
+    color: #09f;
+    margin-top: 30px;
+}
+
+#tutorial ol {
+    padding-left: 20px;
+}
+
+#tutorial li {
+    margin-bottom: 20px;
+}
+
+#tutorial strong {
+    color: #333;
+}
+
+#tutorial em {
+    color: #666;
+    font-style: italic;
+}
+
+/* Estilos generales para secciones de contenido textual */
+.contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contenido h2 {
+    color: #09f;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.contenido h3 {
+    color: #09f;
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+.contenido p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.contenido ol,
+.contenido ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.contenido li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.contenido strong {
+    color: #333;
+    font-weight: bold;
+}
+
+.contenido em {
+    color: #666;
+    font-style: italic;
+}
+
+.contenido small {
+    font-size: 14px;
+    color: #666;
+}
