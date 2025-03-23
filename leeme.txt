@@ -1,2 +1,4 @@
 por motivos de prueba se desactivo el limite de numero de operaciones en esta version
 en el contrato de FileNFTProxy
+
+cargado por rino tirri el 23/03/2025 (23 marzo 2025)
